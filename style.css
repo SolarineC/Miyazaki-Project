@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+/*Reset*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  font-family: "Poppins";
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to top left, transparent,#01133b);
+}
+
+
+/*Background & curve effect*/
+#first{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-image: url("images/totoro1.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  justify-content: center;
+  clip-path: circle(180vh at 65% -80vh);
+}
+
+
+/*Snow effect*/
+.box1 {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url(images/1.png), url(images/2.png), url(images/3.png);
+  animation: animateSnow 30s linear infinite;
+}
+@keyframes animateSnow {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+#first h2 {
+  top: 50px;
+  font-size: 45px;
+}
+#first h2 span {
+  color: red;
+}
+
+
+/*Dots effect*/
+.loader {
+  position: relative;
+  display: flex;
+}
+.loader span {
+  position: relative;
+  top: 22vh;
+  width: 20px;
+  height: 20px;
+  background: rgb(255, 255, 255);
+  margin: 10px 10px;
+  border-radius: 50%;
+  border: 3px solid rgb(0, 0, 0);
+  box-shadow: -8px -8px 15px rgba(255, 255, 255, 1),
+    8px 8px 15px rgba(0, 0, 0, 0.2), inset 3px 3px 5px rgba(0, 0, 0, 0.1),
+    inset -1px -1px 5px rgba(255, 255, 255, 1);
+}
+.loader span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #3b599a;
+  border-radius: 50%;
+  box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.1),
+    inset -1px -1px 5px rgba(255, 255, 255, 1);
+  transform: scale(0);
+  animation: animateDots 10s linear infinite, animateColor 3s linear infinite;
+  animation-delay: calc(var(--i) * 0.8s);
+}
+@keyframes animateDots {
+  0%,
+  9.99%,
+  70.0001% {
+    transform: scale(0);
+  }
+  10%,
+  70% {
+    transform: scale(1);
+  }
+}
+@keyframes animateColor {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+
+/*Working on Cards*/
+#second{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1900px;
+  flex-wrap: wrap;
+  padding: 40px 0;
+}
+.card{
+  position: relative;
+  width: 320px;
+  height: 440px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
+              inset -5px -5px 5px rgba(240, 190, 150, 0.5),
+              -5px -5px 5px rgba(0, 0, 0, 0.05),
+              -5px -5px 5px rgba(238, 119, 22, 0.5);
+border-radius: 15px;
+margin: 30px;
+}
+.box2{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+#b1{
+  background-image: url(images/Le\ chateau\ ambulant.jpg);
+  background-size: cover;
+}
+#b2{
+  background-image: url(images/Mon\ voisin\ Totoro.jpg);
+  background-size: cover;
+}
+#b3{
+  background-image: url(images/Le\ Voyaage\ de\ Chihiro.png);
+  background-size: cover;
+}
+.card:hover #b1{
+  transform: translateY(-50px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45deg, #000000,#FF0000);
+}
+.card:hover #b2{
+  transform: translateY(-50px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45deg, #000000,#FF0000);
+}
+.card:hover #b3{
+  transform: translateY(-50px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45deg, #000000,#FF0000);
+}
+.box2 .content{
+  padding: 20px;
+  text-align: center;
+}
+
+.card:hover .box2 .content h3{
+  font-size: 1.5em;
+  color: rgba(119, 119, 119, 0.137);
+  z-index: 1;
+  transition: 0.5;
+}
+.box2 .content p{
+  font-size: 1em;
+  color: rgba(119, 119, 119, 0.068);
+  z-index: 1;
+  transition: 0.5s;
+}
+.card:hover .box2 .content h3{
+  color: #3E4B6A;
+}
+.card:hover .box2 .content p{
+  color: #B4BAC5;
+}
+.box2 .content a{
+  position: relative;
+  display: inline-block;
+  padding: 5px 5px;
+  background: #a4bacfcb;
+  margin-top: 10px;
+  border-radius: 20px;
+  color: rgba(104, 48, 2, 0.979);
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+.card:hover .box2 .content a{
+  background:#E0B547 ;
+}
