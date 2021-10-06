@@ -1,44 +1,24 @@
-<?php
-
-    //Connect to database
-    $connect = mysqli_connect("localhost", "larbi", "Sol", "API Film");
-    
-    //check connection
-    if (!$connect) {
-        echo "Connection error: " . mysqli_connect_error();
-    }
-
-    //write query
-    $sql = "SELECT * FROM films";
-
-    //make querySol
-    $result = mysqli_query($connect, $sql);
-
-    //fetch result as an array
-    $films = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-    //free result from memory
-    mysqli_free_result($result);
-
-    //close connection
-    mysqli_close($connect);
-
-    echo "<pre>";
-    print_r($films);
-    echo "</pre>";
-?>
+<?php include('templates/mainSection.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="templates/style.css">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Miyazaki's World</title>
 </head>
-<body>
+<body id="index">
 
-    <?php include('templates/header.php') ?>
-
-
-    <?php include('templates/mainSection.php') ?>
-
-</body>
-</html>
+   <section id="first">
+      <h2><span>Mi</span>yazaki's <span>Wo</span>rld</h2>         
+      <div class="box1"></div>
+      <div class="loader">
+         <span style="--i:0;"></span>
+         <span style="--i:1;"></span>
+         <span style="--i:2;"></span>
+         <span style="--i:3;"></span>
+         <a href="heros.php"><img class="arrow" src="images/arrow-left.png" alt=""></a>
+      </div>
+   </section>
