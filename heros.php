@@ -5,6 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Miyazaki's People</title>
    <link rel="stylesheet" href="./style.css">
+   <script src="./script.js"></script>
 </head>
 
 <?php 
@@ -45,24 +46,29 @@ $heros = $query->fetchAll(PDO::FETCH_ASSOC);
    <section>
       <?php 
       if (count($heros) == 0){
-         echo "<h2>Aucun Héro pour ce film !<h2>";
+         echo "<h2>Aucun Héro pour ce film !</h2>";
       }
-      foreach ($heros as $hero) { ?>
+      foreach ($heros as $hero) { 
+         echo "<script>getSeiju(".$hero["id"].")</script>";
+      ?>
          <div>
             <ul>
                <li>Nom : <?= $hero["nom"] ?></li>
                <li>Description : <?= $hero["description"] ?></li>
                <li>Rôle : <?= $hero["role"] ?></li>
+               <li id="seiju<?= $hero["id"] ?>">Seiju : </li>
             </ul>
          </div>
       <?php } ?>
    </section>  
 
+   <?php if (isset($_GET["page"]) && !empty($_GET["page"])){ ?>
    <section>
       <?php 
       for ($i=1; $i <= $nb_page; $i++){ ?>
          <a href="./heros.php?page=<?= $i ?>"><?= $i ?></a>
       <?php } ?>
    </section>
+   <?php } ?>
 </body>
 </html>

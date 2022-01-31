@@ -16,11 +16,6 @@ $query->execute();
 $films = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
-
-
-
-
 <body id="index">
    <section id="first">
       <h2><span>Mi</span>yazaki's <span>Wo</span>rld</h2>         

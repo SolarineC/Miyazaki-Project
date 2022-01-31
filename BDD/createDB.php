@@ -67,6 +67,11 @@ CREATE TABLE genre_film (
     id_film INT
 ) ENGINE=InnoDB CHARACTER SET utf8;
 
+CREATE TABLE seiju (
+    id INT PRIMARY KEY NOT NULL,
+    nom VARCHAR(255) NOT NULL
+) ENGINE=InnoDB CHARACTER SET utf8;
+
 -- Primary key
 ALTER TABLE genre_film 
 ADD PRIMARY KEY (id_genre, id_film);
@@ -79,7 +84,10 @@ ALTER TABLE genre_film
 ADD FOREIGN KEY (id_genre) REFERENCES genre(id);
 
 ALTER TABLE genre_film
-ADD FOREIGN KEY (id_film) REFERENCES film(id);";
+ADD FOREIGN KEY (id_film) REFERENCES film(id);
+
+ALTER TABLE seiju 
+ADD FOREIGN KEY (id) REFERENCES hero(id);";
 $query = $connexion->prepare($sql);
 $query->execute();
 
@@ -137,3 +145,17 @@ foreach ($api_films as $film) {
         $query->execute();
     }
 }
+
+// Seiju
+$sql = "INSERT IGNORE INTO seiju (id,nom) VALUES 
+(1,'Enzo'),
+(2,'Larbi'),
+(3,'Hicham'),
+(4,'Kojo'),
+(5,'Florent'),
+(6,'Ophélie'),
+(7,'Florian'),
+(8,'Célia'),
+(9,'Loïc');";
+$query = $connexion->prepare($sql);
+$query->execute();
